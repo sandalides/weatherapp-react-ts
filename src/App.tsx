@@ -12,13 +12,9 @@ function App() {
 
   const search = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&appid=${api.key}&units=metric`)
-        .then((res: Response) => res.json())
-        .then((result) => {
-          setWeather(result);
-          setQuery("");
-          console.log(result);
-        });
+      fetch(`${api.base}weather?q=${query}&units=metric&APPIO=${api.key}`)
+        .then((res) => res.json())
+        .then((result) => setWeather(result));
     }
   };
 
