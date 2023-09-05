@@ -82,6 +82,7 @@ function App() {
       fetchData();
     } else {
       setErrorMessage("Please enter a city");
+      setWeather(null);
     }
   };
 
@@ -89,21 +90,23 @@ function App() {
     <div className="App">
       <main>
         <div className="search-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Search..."
-            onChange={(e) => setQuery(e.target.value)}
-            value={query}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                handleButtonClick(); // Fetch data when Enter key is pressed
-              }
-            }}
-          />
-          <button className="search-button" onClick={handleButtonClick}>
-            Enter
-          </button>
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-bar"
+              placeholder="Search..."
+              onChange={(e) => setQuery(e.target.value)}
+              value={query}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  handleButtonClick(); // Fetch data when Enter key is pressed
+                }
+              }}
+            />
+            <button className="search-button" onClick={handleButtonClick}>
+              Enter
+            </button>
+          </div>
         </div>
 
         {errorMessage && <div className="error-message">{errorMessage}</div>}
